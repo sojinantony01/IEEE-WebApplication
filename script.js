@@ -36,21 +36,21 @@ const printProduct = () => {
         price: 5
     }]
     productBox.innerHtml = "";
-    for(let i = 0; i< data.length; i++) {             
+    data.forEach((item, i) => {
         products.push(`<div class="product_card_container">
-                <div class="product_card">
-                    <img src="https:${productImage}" />
-                    <div class="product_details">
-                        <div class="product_name">
-                            ${data[i].name}
-                        </div>
-                        <div class="product_price">
-                            ${data[i].price}
-                        </div>
-                    </div>
+        <div class="product_card">
+            <img src="https:${productImage}" />
+            <div class="product_details">
+                <div class="product_name">
+                    ${item.name}
                 </div>
-            </div>`);
-    };    
+                <div class="product_price">
+                    ${item.price}
+                </div>
+            </div>
+        </div>
+    </div>`);
+    })              
     productBox.innerHTML = products.join("");
 }
 
