@@ -36,8 +36,8 @@ const printProduct = () => {
         price: 5
     }]
     productBox.innerHtml = "";
-    data.forEach((item, i) => {
-        products.push(`<div class="product_card_container">
+    products = data.map((item, i) => {
+        return (`<div class="product_card_container">
         <div class="product_card">
             <img src="https:${productImage}" />
             <div class="product_details">
