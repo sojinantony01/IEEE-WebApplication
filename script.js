@@ -36,7 +36,7 @@ const printProduct = () => {
         price: 5
     }]
     productBox.innerHtml = "";
-    products = data.map((item, i) => {
+    products = data.filter(item => item.price < 10).map((item, i) => {
         return (`<div class="product_card_container">
         <div class="product_card">
             <img src="https:${productImage}" />
