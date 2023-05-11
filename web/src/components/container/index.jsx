@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import CreateProduct from "./create-product"
 import Product from "./product"
 
 const data = [{
@@ -27,19 +28,20 @@ const data = [{
 }]
 const Products = () => {
     const [products, setProducts] = useState(data)
-    useEffect(()=> {
-        setTimeout(()=> {
-            const temp = [...products]
-            temp.pop();
-            products.length && setProducts(temp)
-        }, 500)
-    }, [products])
+    const createProduct = (p) => {
+        setProducts([...products, p])
+    }
+
     return (
-        products.map(item => {
-            return (
-                <Product item={item} />
-            )
-        })
+        <>
+            <CreateProduct createProduct={createProduct}/>
+            {products.map(item => {
+                return (
+                    <Product item={item} />
+                )
+            })}
+        </>
+        
     )
 }
 

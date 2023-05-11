@@ -4,8 +4,8 @@ const Sidebar = () => {
     return (
         <div className="sidebar">
             {
-                items.map(item => {
-                    return (<SidebarItem label={item}/>)
+                items.map((item, i) => {
+                    return (<SidebarItem label={item} isHome={i === 0}/>)
                 })
             }
         </div>
