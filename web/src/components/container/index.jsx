@@ -2,32 +2,16 @@ import { useEffect, useState } from "react"
 import CreateProduct from "./create-product"
 import Product from "./product"
 
-const data = [{
-    name: "apple",
-    price: 2000
-},
-{
-    name: "apple -2",
-    price: 300
-},
-{
-    name: "apple -3",
-    price: 20
-},
-{
-    name: "apple -4",
-    price: 2
-},
-{
-    name: "apple -5",
-    price: 4
-},
-{
-    name: "apple -6",
-    price: 5
-}]
 const Products = () => {
-    const [products, setProducts] = useState(data)
+    const [products, setProducts] = useState([])
+    useEffect(()=> {
+        getProducts()
+    }, [])
+    const getProducts = async()=> {
+        const data = await fetch("http://localhost:3001/api/products");
+        const d = await data.json()
+        setProducts(d)
+    }
     const createProduct = (p) => {
         setProducts([...products, p])
     }
